@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace API.Extensions
 {
@@ -9,13 +12,13 @@ namespace API.Extensions
     {
          public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration config)
          {
-             service.AddAuthentication(JwtBearerDefualts.AuthenticationScheme)
-                .AddJwtBearer(option +>
+             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
                 {
-                    options.TokenValidationParameter = new TokenValidationParameter
+                    options.TokenValidationParameters = new TokenValidationParameters
                     {
-                        ValidationIssuerSigningKey = true,
-                        IssuerSingingKey = new SymmetricSecuritKey(Encoding.UTF8.GetBytes(config["TokenKey"])),
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"])),
                         ValidateIssuer = false,
                         ValidateAudience = false,
                     };

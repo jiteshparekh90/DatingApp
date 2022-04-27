@@ -10,9 +10,9 @@ namespace API.Entities
         public int Id { get; set; }
         public string UserName { get; set; }
 
-        public byte[] passwordHash { get; set; }
+        
         public byte[] PasswordHash { get; internal set; }
-        public byte[] passwordSalt { get; set; }
+        
         public byte[] PasswordSalt { get; internal set; }
     }
 }
