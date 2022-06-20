@@ -8,7 +8,6 @@ import {
 import { Observable } from 'rxjs';
 import { AccountService } from '../_services/account.service';
 import { User } from '../_models/user';
-import { CursorError } from '@angular/compiler/src/ml_parser/lexer';
 import { take } from 'rxjs/operators';
 
 @Injectable()
